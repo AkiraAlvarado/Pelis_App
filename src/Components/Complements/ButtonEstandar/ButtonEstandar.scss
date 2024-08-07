@@ -1,0 +1,26 @@
+.buttonEstandar{
+   display: inline-flex;
+   gap: 0.5em;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   padding: 0.750em;
+   background-color: var(--yellow-600);
+   box-shadow: 2px 2px 4px 1px var(--yellow-600);
+   border-radius: $border-l-radius;
+   font-size: var(--large-font-size);
+   width: 100%;
+   flex: 1; // Hace que ocupe todo el espacio o width disponible
+   @include from(xs) {
+      flex: 0;
+      padding: 1em 1.5em;
+   }
+   &:hover{
+      cursor: pointer;
+      background-color: var(--yellow-800);
+
+   }
+   &:active{
+      background-color: var(--yellow-900);
+   }
+}

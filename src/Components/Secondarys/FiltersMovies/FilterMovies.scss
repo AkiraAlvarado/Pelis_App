@@ -1,0 +1,71 @@
+.filter-main{
+   background-color: rgba(0,0,0,0.5);
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   opacity: 0;
+   pointer-events: none;
+   @include from(l) {
+      background-color: transparent;
+      width: auto;
+      height: auto;
+      position: relative;
+      display: block;
+      opacity: 1;
+      pointer-events: all;
+   }
+}
+
+.filterGenre-title{
+   display: none;
+   font-size: var(--item-s-font-size);
+   @include from(l) {
+      display: block;
+   }
+}
+
+.filterGenre-container{
+   flex-direction: column;
+   padding: 2rem;
+   background-color: var(--blue-800);
+
+   @include from(l) {
+      display: flex;
+   }
+}
+
+.filter-genre{
+   border-bottom: none;
+   padding-bottom:1.5rem ;
+   border-radius: $border-s-radius;
+   font-size: var(--large-font-size);
+   @include from(l) {
+      border-bottom: 1px solid var(--white-100);
+      padding: 1.5rem 0.5rem ;
+   }
+   &:hover{
+      cursor: pointer;
+      background-color: var(--blue-400);
+   }
+   &:active{
+      background-color: var(--blue-500);
+   }
+}
+
+.list-show{
+   opacity: 1;
+   pointer-events: all;
+}
+
+.buttonGenre-modal{
+   display: flex;
+   flex-direction: row-reverse;
+   @include from(l) {
+      display: none;
+   }
+}

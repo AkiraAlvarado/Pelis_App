@@ -1,0 +1,27 @@
+.buttonFilter{
+   padding: 1em;
+   font-size: var(--medium-font-size);
+   border: 5px solid var(--blue-500);
+   box-shadow: 2px 2px 4px 1px var(--blue-500);
+   border-radius: 32px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   line-height: 150%;
+   white-space: nowrap;
+   flex: 1; // Hace que ocupe todo el espacio o width disponible
+
+   &:hover{
+      cursor: pointer;
+      background-color: var(--blue-400);
+   }
+   &:active{
+      background-color: var(--blue-500);
+   }
+
+   @include from(l) {
+      padding: 1em 2em;
+      text-align: center;
+   }
+   
+}

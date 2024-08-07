@@ -1,0 +1,79 @@
+.sectionFilter{
+   flex-direction: column;
+   align-items: center;
+   gap: 1rem;
+   margin-top: var(--section-separator);
+   @include from(l) {
+      flex-direction: row;
+   }
+
+   &__buttons{
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-template-rows: repeat(2,1fr);
+      gap: 1rem;
+
+      @include from(s) {
+         display: flex;
+         gap: 1.5rem;
+      }
+
+   }
+   &__input{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 1em;
+      width: 100%;
+      @include from(xs) {
+         flex-direction: row;
+      }
+   }
+}
+
+.sectionPrincipalMovies{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   gap: 2rem;
+   margin-top: var(--section-separator);
+   @include from(s) {
+      gap: 3rem;
+   }
+   @include from(l) {
+      flex-direction: row;
+      gap: 4rem;
+   }
+}
+
+.sectionGenre{
+   width: 100%;
+   @include from(l) {
+      width: 20%;
+   }
+
+}
+.sectionMovies {
+   width: 100%;
+   display: grid;
+   gap: 1.5em;
+   grid-template-columns: repeat(2, 1fr);
+   @include from(s) {
+     gap: 2.5em;
+     grid-template-columns: repeat(3, 1fr);
+   }
+   @include from(l) {
+     grid-template-columns: repeat(4, 1fr);
+     width: 75%;
+     gap: 3em;
+   }
+   grid-auto-rows: minmax(100px, auto);
+   align-content: start;
+ }
+.buttonSearch{
+   display: none;
+   @include from(xs) {
+      display: flex;
+   }
+}
