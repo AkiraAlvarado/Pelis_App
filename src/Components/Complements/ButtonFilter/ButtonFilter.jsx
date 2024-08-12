@@ -1,7 +1,9 @@
-
-const ButtonFilter = ({ text, onClick }) => {
+const ButtonFilter = ({ text, onClick, selected }) => {
    return (
-     <div className="buttonFilter" onClick={onClick}>
+     <div 
+       onClick={onClick}  
+       className={`buttonFilter ${selected ? "active-button" : ""}`}
+     >
        {text}
      </div>
    );

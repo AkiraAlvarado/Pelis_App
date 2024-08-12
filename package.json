@@ -2,7 +2,6 @@
   "name": "movies-app",
   "private": true,
   "homepage": "https://AkiraAlvarado.github.io/Pelis-App",
-
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -18,6 +17,7 @@
     "gh-pages": "^6.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
     "sass": "^1.77.8"
   },
   "devDependencies": {

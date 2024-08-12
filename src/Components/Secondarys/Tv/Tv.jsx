@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const Movie = ({ movie }) => {
+const Tv = ({ movie }) => {
   const src = import.meta.env.VITE_IMG_MOVIE;
 
   // Verifica si es una película o un programa de TV
   const title = movie.title || movie.name;
 
   return (
-    <Link to={`/MoviesPage/${movie.id}`}>
+    <Link to={`/TvListPage/${movie.id}`}>
       <div className="movie-container">
         <img className="movie-image" src={`${src}${movie.poster_path}`} alt="Poster" />
         <p className="movie-title">{title}</p>
@@ -16,4 +16,4 @@ const Movie = ({ movie }) => {
   );
 };
 
-export default Movie;
+export default Tv;

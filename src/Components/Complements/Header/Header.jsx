@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 
 const Header = () => {
@@ -17,18 +18,19 @@ const Header = () => {
             <div className="navBar__toggle" onClick={toggleShow}>
             </div>
             <div className={`navBar ${show ? '' : 'show'}`}>
+               <NavLink to="/MoviesPage">
                <div className="flex">
                   <i className="fa-solid fa-house-chimney-crack"></i>
                   <p>Peliculas</p>
                </div>
+               </NavLink>
+
+               <NavLink to="/TvListPage">
                <div className="flex"> 
                   <i className="fa-solid fa-tv"></i>
                   <p>Series de TV</p>
                </div>
-               <div className="flex">
-                  <i className="fa-solid fa-person"></i>
-                  <p>Actores</p>
-               </div>
+               </NavLink>
             </div>
          </div>
       </header>

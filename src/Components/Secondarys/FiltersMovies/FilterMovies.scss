@@ -48,13 +48,19 @@
       border-bottom: 1px solid var(--white-100);
       padding: 1.5rem 0.5rem ;
    }
-   &:hover{
+   &:hover {
       cursor: pointer;
       background-color: var(--blue-400);
-   }
-   &:active{
+    }
+  
+    &:active {
       background-color: var(--blue-500);
-   }
+    }
+  
+    &.active-genre {
+      background-color: var(--blue-600); // Cambia el color de fondo del género activo
+      font-weight: bold; // Cambia el grosor de la fuente
+    }
 }
 
 .list-show{

@@ -18,6 +18,10 @@
    &:active{
       background-color: var(--blue-500);
    }
+   &.active-button{
+      background-color: var(--blue-600); // Cambia el color de fondo del género activo
+      font-weight: bold; // Cambia el grosor de la fuente
+   }
 
    @include from(l) {
       padding: 1em 2em;

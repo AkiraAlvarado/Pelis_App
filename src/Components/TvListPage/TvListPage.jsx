@@ -4,11 +4,11 @@ import ButtonEstandar from "../Complements/ButtonEstandar/ButtonEstandar";
 import FilterButtons from '../Complements/ListComponentes/FilterButtons';
 import InputSearch from "../Complements/inputSearch/InputSearch";
 import FilterMovies from '../Secondarys/FiltersMovies/FilterMovies';
-import MovieList from '../Complements/ListComponentes/MovieList';
+import TvList from '../Complements/ListComponentes/TvList';
 import useMovies from '../Hooks/usePetitionon';
 import useInformation from '../Hooks/useInformation';
 
-const PageMovie = () => {
+const TvListPage = () => {
   // Manejo de estados
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
@@ -17,26 +17,25 @@ const PageMovie = () => {
   // Estados relacionados con géneros
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [moviesURL, setMoviesURL] = useState(import.meta.env.VITE_API_URL_POPULAR);
+  const [tvURL, setMoviesURL] = useState(import.meta.env.VITE_TV_AIRING_TODAY);
   const [page, setPage] = useState(1);
 
   // URL y claves de la API
-  const searchMoviesURL = import.meta.env.VITE_API_URL_SEARCH;
-  const discoverMoviesURL = import.meta.env.VITE_MOVIE_DISCOVER;
-  const discoverGenre = import.meta.env.VITE_MOVIE_GENRE;
+  const searchTVURL = import.meta.env.VITE_API_URL_SEARCH;
+  const discoverTVURL = import.meta.env.VITE_TV_VER;
+  const discoverGenre = import.meta.env.VITE_TV_GENRES;
   const apiKey = import.meta.env.VITE_API_KEY;
 
   // Custom hook para obtener las películas
-  const movies = useMovies(moviesURL, searchMoviesURL, discoverMoviesURL, apiKey, debouncedQuery, selectedGenre, page);
+  const tv = useMovies(tvURL, searchTVURL, discoverTVURL, apiKey, debouncedQuery, selectedGenre, page);
   const genres = useInformation({ url: discoverGenre, apiKey });
 
   const buttonData = [
-    { text: "En emisión", url: import.meta.env.VITE_API_URL_PLAY },
-    { text: "Popular", url: import.meta.env.VITE_API_URL_POPULAR },
-    { text: "Mejor Valorados", url: import.meta.env.VITE_API_URL_VALORADAS },
-    { text: "Proximamente", url: import.meta.env.VITE_API_URL_ESTRENO }
-  ];
-
+   { text: "Emisión Hoy", url: import.meta.env.  VITE_TV_AIR_TODAY },
+   { text: "Al aire", url: import.meta.env.  VITE_TV_ON_AIR },
+   { text: "Populares", url: import.meta.env.VITE_TV_POPULAR },
+   { text: "Rankeados", url: import.meta.env. VITE_TV_RANKED }
+ ];
 
   // useEffect para manejar el debounce
   useEffect(() => {
@@ -49,8 +48,6 @@ const PageMovie = () => {
     };
   }, [query]);
 
-  // useEffect para obtener géneros al cargar la página
-
   // useEffect para manejar el location y actualizar el género seleccionado
   useEffect(() => {
     if (location.state && location.state.genreId) {
@@ -61,12 +58,12 @@ const PageMovie = () => {
   // Filtrar las películas basadas en el género seleccionado
   useEffect(() => {
     if (selectedGenre && query) {
-      const filtered = movies.filter(movie => movie.genre_ids.includes(selectedGenre));
+      const filtered = tv.filter(movie => movie.genre_ids.includes(selectedGenre));
       setFilteredMovies(filtered.slice(0, 20)); // Tomar las primeras 20 películas
     } else {
-      setFilteredMovies(movies);
+      setFilteredMovies(tv);
     }
-  }, [selectedGenre, movies, query]);
+  }, [selectedGenre,tv, query]);
 
   // Manejar el cambio de filtro
   const handleFilterClick = (url) => {
@@ -85,7 +82,7 @@ const PageMovie = () => {
     <>
       <div className="sectionFilter l-container">
         <div className="sectionFilter__buttons">
-          <FilterButtons buttonData={buttonData} onFilterClick={handleFilterClick} moviesURL={moviesURL} />
+          <FilterButtons buttonData={buttonData} onFilterClick={handleFilterClick} moviesURL={tvURL} />
         </div>
         <div className="sectionFilter__input">
           <InputSearch text={"Busca tu película favorita"} onChange={(e) => setQuery(e.target.value)} />
@@ -96,11 +93,11 @@ const PageMovie = () => {
         <div className='sectionGenre'>
           <FilterMovies genres={genres} onGenreChange={setSelectedGenre} activeGenre={selectedGenre} />
         </div>
-        <MovieList movies={filteredMovies} />
+        <TvList movies={filteredMovies} />
       </div>
       <button onClick={NextPage} disabled={!!query}>Siguiente</button>
     </>
   );
 };
 
-export default PageMovie;
+export default TvListPage;
